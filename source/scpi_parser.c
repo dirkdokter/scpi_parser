@@ -342,6 +342,11 @@ void scpi_discard_blob(void)
 	}
 }
 
+/** Reset parser state. */
+void scpi_parser_reset(void)
+{
+	pars_reset_cmd();
+}
 
 /** Reset parser state. */
 static void pars_reset_cmd(void)
@@ -354,6 +359,7 @@ static void pars_reset_cmd(void)
 	pst.arg_i = 0;
 	pst.string_escape = false;
 }
+
 
 
 /** Reset parser state, keep level (semicolon) */

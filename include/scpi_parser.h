@@ -101,3 +101,5 @@ void scpi_send_string_raw(const char *message);
 /** Clear the error queue */
 void scpi_clear_errors(void);
 
+/** Reset parser state. */
+void scpi_parser_reset(void);
