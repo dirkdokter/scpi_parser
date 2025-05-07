@@ -697,7 +697,12 @@ static bool match_cmd_do(const SCPI_command_t *cmd, bool partial)
 static void run_command_callback(void)
 {
 	if (pst.matched_cmd != NULL) {
-		pst.matched_cmd->callback(pst.args); // run
+		if (pst.matched_cmd->callback_with_additional_data != NULL) {
+			pst.matched_cmd->callback_with_additional_data(pst.args, pst.matched_cmd->additional_data_ptr); // run
+		}
+		else {
+			pst.matched_cmd->callback(pst.args); // run
+		}
 	}
 }
 

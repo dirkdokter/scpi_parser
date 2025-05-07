@@ -56,6 +56,12 @@ typedef struct {
 	const uint8_t blob_chunk;
 	// Blob chunk callback (every blob_chunk bytes)
 	void (*blob_callback)(const uint8_t *bytes);
+
+	// --- OPTIONAL ---
+	// called when the command is completed. BLOB arg must be last in the argument list,
+	// and only the first part is collected.
+	void (*callback_with_additional_data)(const SCPI_argval_t *args, void* additional_data_ptr);
+	void* additional_data_ptr;
 } SCPI_command_t;
 
 
